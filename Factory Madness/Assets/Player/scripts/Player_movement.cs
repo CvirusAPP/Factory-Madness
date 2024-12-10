@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
+using UnityEditor;
 using UnityEngine;
 
 public class Player_movement : MonoBehaviour
@@ -8,14 +10,19 @@ public class Player_movement : MonoBehaviour
     [HideInInspector]
     public Animator anim;
     public float Speed = 5f;
-    void Start()
+    
+
+        void Start()
     {
         anim = GetComponent<Animator>();
+        
     }
  
     void Update()
     {
         movement();
+        Correr();
+        Jump();
     }
 
     void movement()
@@ -58,6 +65,29 @@ public class Player_movement : MonoBehaviour
             anim.SetBool("Right", false);
         }
     }
-    
+    void Correr()
+    {
+       if(Input.GetKey(KeyCode.LeftShift))
+       {
+          anim.SetBool("Run", true);
+       }
+       else
+       {
+          anim.SetBool("Run", false);
+       }
+
+    }
+    void Jump()
+    {
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            anim.SetBool("Jump", true);
+        }
+        if(Input.GetKeyUp(KeyCode.Space))
+        {
+            anim.SetBool("Jump", false);
+        }
+
+    }
 }
 
