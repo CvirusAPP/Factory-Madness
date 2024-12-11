@@ -10,7 +10,9 @@ public class Player_movement : MonoBehaviour
     [HideInInspector]
     public Animator anim;
     public float Speed = 5f;
-    
+
+    public  float JumpForce = 5f;
+    public Rigidbody rb;
 
         void Start()
     {
@@ -82,12 +84,13 @@ public class Player_movement : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Space))
         {
             anim.SetBool("Jump", true);
+            rb.AddForce(transform.up * JumpForce, ForceMode.Impulse);
         }
         if(Input.GetKeyUp(KeyCode.Space))
         {
             anim.SetBool("Jump", false);
+            
         }
-
     }
+   
 }
-
