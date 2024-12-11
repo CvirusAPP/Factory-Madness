@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
@@ -11,13 +12,16 @@ public class Player_movement : MonoBehaviour
     public Animator anim;
     public float Speed = 5f;
 
-    public  float JumpForce = 5f;
+    private  float JumpForce = 4f;
     public Rigidbody rb;
-
-        void Start()
+    
+    private float blockTime = 3f;
+    private float nextPressTime = 0f;
+    
+    void Start()
     {
         anim = GetComponent<Animator>();
-        
+       
     }
  
     void Update()
@@ -72,25 +76,34 @@ public class Player_movement : MonoBehaviour
        if(Input.GetKey(KeyCode.LeftShift))
        {
           anim.SetBool("Run", true);
+          Speed = 8f;
        }
        else
        {
           anim.SetBool("Run", false);
+          Speed = 5f;
        }
 
     }
     void Jump()
     {
-        if(Input.GetKeyDown(KeyCode.Space))
+        if(Input.GetKeyDown(KeyCode.Space)&& Time.time >= nextPressTime)
         {
+           nextPressTime = Time.time + blockTime;
             anim.SetBool("Jump", true);
             rb.AddForce(transform.up * JumpForce, ForceMode.Impulse);
+
         }
         if(Input.GetKeyUp(KeyCode.Space))
         {
-            anim.SetBool("Jump", false);
             
+            anim.SetBool("Jump", false);
         }
+        
     }
+    
    
 }
+    
+
+
