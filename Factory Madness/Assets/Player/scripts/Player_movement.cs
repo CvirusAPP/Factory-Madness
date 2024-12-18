@@ -12,7 +12,8 @@ public class Player_movement : MonoBehaviour
     public Animator anim;
     public float Speed = 5f;
 
-    private  float JumpForce = 4f;
+    public  float JumpForce = 4f;
+    public float FallForce = 10f;
     public Rigidbody rb;
     
     private float blockTime = 3f;

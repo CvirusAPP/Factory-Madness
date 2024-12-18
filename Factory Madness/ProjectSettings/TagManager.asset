@@ -5,11 +5,12 @@ TagManager:
   serializedVersion: 2
   tags:
   - MainCamera2
+  - colisor de escadas
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - ground
   - Water
   - UI
   - 
