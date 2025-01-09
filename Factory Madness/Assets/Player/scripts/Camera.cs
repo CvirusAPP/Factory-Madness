@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,6 +10,8 @@ public class Camera : MonoBehaviour
     public Transform CameraTransform;
     Vector2 rotaçãoMouse;
     public int sensibilidade;
+    internal static Camera main;
+
 
     void Start()
     {
@@ -33,4 +36,5 @@ public class Camera : MonoBehaviour
 
         
     }
+
 }
